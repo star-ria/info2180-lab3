@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll("#board div");
     const status = document.getElementById("status");
+    const newGameBtn = document.querySelector(".btn");
 
+    const originalStatus = status.textContent;
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
@@ -40,4 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return winningCombinations.some(combination => 
             combination.every(index => state[index] === player));
     }
+
+    newGameBtn.addEventListener("click", () => {
+        squares.forEach(square => {
+            square.textContent = "";
+            square.classList.remove("X", "O", "hover");
+        });
+        state = Array(9).fill(null);
+        turn = "X";
+        gameOver = false;
+        status.textContent = originalStatus;
+        status.classList.remove("you-won");
+    });
 });
