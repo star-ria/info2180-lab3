@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     squares.forEach((square, index) => {
         square.addEventListener("click", () => {
-            if (gameOver) return;
+            if (gameOver || state[index] !== null) return;
 
             square.textContent = turn;
             square.classList.add(turn);
