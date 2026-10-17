@@ -14,5 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             turn = turn === "X" ? "O" : "X";
         });
+
+        square.addEventListener("mouseover", () => square.classList.add("hover"));
+        square.addEventListener("mouseout", () => square.classList.remove("hover"));
     });
 });
